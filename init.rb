@@ -7,6 +7,10 @@ class Heroku::Command::Sopa < Heroku::Command::BaseWithApp
 
   def on
     ensure_custom_error_pages
+    # Extra splash pages
+    # http://blacklists.eff.org/
+    # http://www.zachstronaut.com/lab/text-shadow-box/stop-sopa.html
+    # http://protestsopa.org/
     heroku.add_config_vars(app, { "MAINTENANCE_PAGE_URL" => "https://www.google.com/landing/takeaction/" })
     heroku.maintenance(app, :on)
     display "SOPA protest is now enabled"
